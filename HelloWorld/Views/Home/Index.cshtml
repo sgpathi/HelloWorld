@@ -1,0 +1,10 @@
+﻿@model HelloWorld.Models.GreetingViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @Html.LabelFor(model => model.GreetingMessage)<br />
+    @Html.DisplayFor(model => model.GreetingMessage)<br />
+</div>
