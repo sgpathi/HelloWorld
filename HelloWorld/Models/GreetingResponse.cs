@@ -2,7 +2,7 @@
 
 namespace HelloWorld.Models
 {
-    public class GreetingViewModel
+    public class GreetingResponse
     {
         [Display(Name = "Greeting...")]
         public string GreetingMessage { get; set; }

@@ -1,5 +1,3 @@
-using System;
-
 namespace HelloWorld.Models
 {
     public class ErrorViewModel
