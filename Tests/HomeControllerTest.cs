@@ -1,4 +1,5 @@
 using BusinessServices;
+using Microsoft.Extensions.Configuration;
 using HelloWorld.Controllers;
 using HelloWorld.Models;
 using Moq;
@@ -14,7 +15,11 @@ namespace Tests
             //Arrange
             var mockHelloWorldService = new Mock<IBusinessService>();
             mockHelloWorldService.Setup(x => x.GetGreetings()).Returns("Hello World from Api Service!");
-            var controller = new HomeController(mockHelloWorldService.Object);
+            
+            var mockconfig = new Mock<IConfiguration>();
+            mockconfig.Setup(x => x.GetSection("DisplaySettings")["WriteInfoTo"]).Returns("Client");
+            
+            var controller = new HomeController(mockHelloWorldService.Object, mockconfig.Object);
 
             //Act
             var response = controller.DefaultGreetings();
@@ -29,7 +34,10 @@ namespace Tests
             //Arrange
             var mockHelloWorldService = new Mock<IBusinessService>();
             mockHelloWorldService.Setup(x => x.GetGreetings(It.IsAny<string>())).Returns("Hello World from Sethu!");
-            var controller = new HomeController(mockHelloWorldService.Object);
+
+            var mockconfig = new Mock<IConfiguration>();
+            mockconfig.Setup(x => x.GetSection("DisplaySettings")["WriteInfoTo"]).Returns("Client");
+            var controller = new HomeController(mockHelloWorldService.Object, mockconfig.Object);
             var request = new GreetingRequest { Name = "Sethu" };
 
             //Act

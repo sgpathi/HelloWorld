@@ -17,7 +17,7 @@ namespace Tests
             var response = helloWorldService.GetGreetings();
 
             //Assert
-            Assert.Equal("Hello World from Api Service!", response);
+            Assert.Equal("Hello World from HelloWorldService!", response);
         }
 
         [Fact]
